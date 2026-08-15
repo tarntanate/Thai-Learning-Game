@@ -29,6 +29,7 @@ export type QuestionCategory =
   | 'sentence'
   | 'rajasap'
   | 'rohan'
+  | 'dialect'
 
 export interface Question {
   id: string

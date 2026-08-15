@@ -109,6 +109,7 @@ export const CATEGORY_LABEL: Record<QuestionCategory, string> = {
   sentence: 'เติมคำในประโยค',
   rajasap: 'คำราชาศัพท์',
   rohan: 'คำที่ใช้ รร / ฤ ฤๅ / บัน-บรร',
+  dialect: 'ภาษาไทยมาตรฐานและภาษาถิ่น',
 }
 
 export interface GradeMeta {
