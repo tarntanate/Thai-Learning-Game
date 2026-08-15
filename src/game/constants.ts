@@ -89,17 +89,26 @@ export const RARITY_LABEL: Record<ItemMeta['rarity'], string> = {
 export const CATEGORY_LABEL: Record<QuestionCategory, string> = {
   vowel: 'สระ',
   consonant: 'พยัญชนะ',
+  consonantclass: 'ไตรยางศ์ (อักษรสามหมู่)',
   tone: 'วรรณยุกต์',
   matra: 'มาตราตัวสะกด',
   spelling: 'การสะกดคำ',
   synonym: 'คำที่มีความหมายเหมือนกัน',
   antonym: 'คำที่มีความหมายตรงข้าม',
   homophone: 'คำที่ออกเสียงเหมือนกัน',
+  homograph: 'คำพ้องรูป',
   karan: 'ตัวการันต์',
   cluster: 'คำควบกล้ำ',
+  leadconsonant: 'อักษรนำ',
   classifier: 'ลักษณนาม',
   rhyme: 'คำคล้องจอง',
+  wordclass: 'ชนิดของคำ',
+  sentencetype: 'ชนิดของประโยค',
+  idiom: 'สำนวนและสุภาษิต',
+  punctuation: 'เครื่องหมายวรรคตอน',
   sentence: 'เติมคำในประโยค',
+  rajasap: 'คำราชาศัพท์',
+  rohan: 'คำที่ใช้ รร / ฤ ฤๅ / บัน-บรร',
 }
 
 export interface GradeMeta {
@@ -126,7 +135,7 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.2',
     emoji: '🐤',
     gradient: 'from-amber-200 via-yellow-200 to-lime-200',
-    enabled: false,
+    enabled: true,
   },
   {
     grade: 3,
@@ -134,7 +143,7 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.3',
     emoji: '🐥',
     gradient: 'from-emerald-200 via-teal-200 to-cyan-200',
-    enabled: false,
+    enabled: true,
   },
   {
     grade: 4,

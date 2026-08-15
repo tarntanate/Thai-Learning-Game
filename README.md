@@ -53,6 +53,6 @@ src/
 
 ## การเพิ่มคำถามระดับชั้นอื่น
 
-1. สร้างไฟล์ `src/data/grade2.ts` (หรือระดับชั้นอื่น) โดยใช้รูปแบบเดียวกับ `grade1.ts`
+1. สร้างไฟล์ `src/data/grade4.ts` (หรือระดับชั้นอื่น) โดยใช้รูปแบบเดียวกับ `grade1.ts`, `grade2.ts`, `grade3.ts`
 2. ลงทะเบียนไว้ใน `BANK` ที่ `src/data/index.ts`
 3. เปิดใช้งานเมนูโดยตั้ง `enabled: true` ใน `GRADES` ที่ `src/game/constants.ts`
