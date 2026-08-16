@@ -152,7 +152,7 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.4',
     emoji: '🦉',
     gradient: 'from-sky-200 via-blue-200 to-indigo-200',
-    enabled: false,
+    enabled: true,
   },
   {
     grade: 5,
