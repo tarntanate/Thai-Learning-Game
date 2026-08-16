@@ -30,6 +30,7 @@ export type QuestionCategory =
   | 'rajasap'
   | 'rohan'
   | 'dialect'
+  | 'loanword'
 
 export interface Question {
   id: string

@@ -110,6 +110,7 @@ export const CATEGORY_LABEL: Record<QuestionCategory, string> = {
   rajasap: 'คำราชาศัพท์',
   rohan: 'คำที่ใช้ รร / ฤ ฤๅ / บัน-บรร',
   dialect: 'ภาษาไทยมาตรฐานและภาษาถิ่น',
+  loanword: 'คำที่มาจากภาษาต่างประเทศ',
 }
 
 export interface GradeMeta {
@@ -160,7 +161,7 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.5',
     emoji: '🦄',
     gradient: 'from-violet-200 via-purple-200 to-fuchsia-200',
-    enabled: false,
+    enabled: true,
   },
   {
     grade: 6,
