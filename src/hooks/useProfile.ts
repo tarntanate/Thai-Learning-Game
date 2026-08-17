@@ -26,8 +26,11 @@ export function useProfile() {
     const prev = profileRef.current
     const xp = calcXp(result)
     const stars = calcStars(result)
-    const items = result.cleared ? rollItems(missedCount(result)) : []
     const leveled = applyXp(prev, xp)
+
+    const baseItems = result.cleared ? rollItems(missedCount(result)) : []
+    const levelUpItems: ItemId[] = Array.from({ length: leveled.levelsGained }, () => 'teacher')
+    const items = [...baseItems, ...levelUpItems]
 
     const nextItems = { ...prev.items }
     for (const id of items) nextItems[id] = (nextItems[id] ?? 0) + 1
