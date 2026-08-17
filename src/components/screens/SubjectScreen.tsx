@@ -14,7 +14,7 @@ export function SubjectScreen({ onSelect, onBack }: SubjectScreenProps) {
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
       <GlassCard className="text-center">
-        <h1 className="text-gradient text-3xl font-bold">เลือกวิชา</h1>
+        <h1 className="thai-text-safe text-gradient text-3xl font-bold">เลือกวิชา</h1>
         <p className="mt-2 text-sm text-slate-500">วันนี้อยากออกผจญภัยในวิชาไหนดี?</p>
       </GlassCard>
 

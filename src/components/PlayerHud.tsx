@@ -23,7 +23,7 @@ export function PlayerHud({ profile, className }: PlayerHudProps) {
 
       <div className="min-w-[9rem] flex-1">
         <div className="flex items-baseline gap-2">
-          <span className="font-display truncate font-semibold text-slate-700">{profile.name}</span>
+          <span className="thai-text-safe font-display truncate font-semibold text-slate-700">{profile.name}</span>
           <span className="rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-semibold text-fuchsia-500">
             {rank.title}
           </span>

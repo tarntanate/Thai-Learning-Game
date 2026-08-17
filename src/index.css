@@ -155,6 +155,16 @@
   }
 }
 
+/*
+ * Mali's Thai combining marks can extend beyond Tailwind's default line box,
+ * especially at display sizes or inside `truncate` (overflow: hidden).
+ */
+@utility thai-text-safe {
+  --tw-leading: 1.5;
+  line-height: 1.5;
+  padding-block: 0.15em 0.1em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

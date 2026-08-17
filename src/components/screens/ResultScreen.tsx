@@ -45,7 +45,7 @@ export function ResultScreen({ result, reward, onPlayAgain, onHome }: ResultScre
           {result.cleared ? (perfect ? '🏆' : '🎊') : '💔'}
         </motion.div>
 
-        <h1 className="text-gradient mt-2 text-3xl font-bold">
+        <h1 className="thai-text-safe text-gradient mt-2 text-3xl font-bold">
           {result.cleared ? (perfect ? 'สุดยอดมาก! ตอบถูกทุกข้อ' : 'เล่นจบแล้ว เก่งมาก!') : 'หัวใจหมดแล้ว...'}
         </h1>
         <p className="mt-2 text-sm text-slate-500">

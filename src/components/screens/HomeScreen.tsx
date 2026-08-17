@@ -34,7 +34,7 @@ export function HomeScreen({ profile, onPlay, onOpenBag, onOpenHowTo, onRename }
           🚀
         </motion.div>
 
-        <h1 className="text-gradient text-4xl font-bold sm:text-5xl">ห้องเรียนผจญภัย</h1>
+        <h1 className="thai-text-safe text-gradient text-4xl font-bold sm:text-5xl">ห้องเรียนผจญภัย</h1>
         <p className="mt-2 text-sm text-slate-500 sm:text-base">
           ตะลุยแบบฝึกหัดหลากหลายวิชา เก็บเลเวล สะสมไอเท็ม และเก็บดาวไปตกแต่งยานอวกาศ
         </p>
@@ -102,7 +102,9 @@ export function HomeScreen({ profile, onPlay, onOpenBag, onOpenHowTo, onRename }
             </div>
           ) : (
             <div className="flex items-center justify-between gap-3">
-              <span className="font-display truncate text-xl font-semibold text-slate-700">{profile.name}</span>
+              <span className="thai-text-safe font-display truncate text-xl font-semibold text-slate-700">
+                {profile.name}
+              </span>
               <GlassButton
                 variant="secondary"
                 size="sm"

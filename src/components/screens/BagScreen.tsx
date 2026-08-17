@@ -23,7 +23,7 @@ export function BagScreen({ profile, onBack, onReset }: BagScreenProps) {
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-4">
       <GlassCard className="text-center">
         <div className="text-5xl">{rank.emoji}</div>
-        <h1 className="text-gradient mt-1 text-3xl font-bold">กระเป๋าของ {profile.name}</h1>
+        <h1 className="thai-text-safe text-gradient mt-1 text-3xl font-bold">กระเป๋าของ {profile.name}</h1>
         <p className="mt-1 text-sm text-slate-500">
           {rank.title} · Lv.{profile.level} · {profile.xp}/{need} XP
         </p>

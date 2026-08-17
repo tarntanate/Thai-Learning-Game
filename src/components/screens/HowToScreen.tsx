@@ -11,7 +11,7 @@ export function HowToScreen({ onBack }: HowToScreenProps) {
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-4">
       <GlassCard className="text-center">
         <div className="text-5xl">📖</div>
-        <h1 className="text-gradient mt-1 text-3xl font-bold">วิธีเล่น</h1>
+        <h1 className="thai-text-safe text-gradient mt-1 text-3xl font-bold">วิธีเล่น</h1>
       </GlassCard>
 
       <GlassCard delay={0.05}>
