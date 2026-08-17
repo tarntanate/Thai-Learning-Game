@@ -1,6 +1,6 @@
 import { getQuestionBank } from '@/data'
 import { QUESTIONS_PER_SESSION } from '@/game/constants'
-import type { Grade, Question, RuntimeQuestion } from '@/game/types'
+import type { Grade, Question, RuntimeQuestion, Subject } from '@/game/types'
 import { shuffle } from '@/lib/random'
 
 export function toRuntimeQuestion(question: Question): RuntimeQuestion {
@@ -19,8 +19,8 @@ export interface SessionDeck {
  * สุ่มคำถามสำหรับหนึ่งรอบการเล่น โดยเลี่ยงคำถามที่เคยเจอแล้ว
  * ถ้าคำถามที่ยังไม่เคยเจอเหลือไม่พอ จะรีเซ็ตคลังให้เล่นใหม่ทั้งหมด
  */
-export function buildDeck(grade: Grade, seenIds: readonly string[]): SessionDeck {
-  const bank = getQuestionBank(grade)
+export function buildDeck(subject: Subject, grade: Grade, seenIds: readonly string[]): SessionDeck {
+  const bank = getQuestionBank(subject, grade)
   const seen = new Set(seenIds)
   let unseen = bank.filter((q) => !seen.has(q.id))
 

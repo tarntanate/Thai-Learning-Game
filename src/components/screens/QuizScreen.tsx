@@ -12,9 +12,10 @@ import {
   MAX_HEARTS,
   MAX_SURRENDER,
   QUESTIONS_PER_SESSION,
+  SUBJECTS,
 } from '@/game/constants'
 import { buildDeck, toRuntimeQuestion } from '@/game/deck'
-import type { Difficulty, Grade, ItemId, Question, RuntimeQuestion, SessionResult } from '@/game/types'
+import type { Difficulty, Grade, ItemId, Question, RuntimeQuestion, SessionResult, Subject } from '@/game/types'
 import { playSfx } from '@/lib/sound'
 import { pickOne, shuffle } from '@/lib/random'
 import { cn } from '@/lib/utils'
@@ -26,6 +27,7 @@ type Outcome = 'correct' | 'wrong' | 'timeout' | 'surrender'
 
 interface QuizScreenProps {
   grade: Grade
+  subject: Subject
   difficulty: Difficulty
   seenIds: string[]
   inventory: Record<ItemId, number>
@@ -33,10 +35,11 @@ interface QuizScreenProps {
   onFinish: (result: SessionResult) => void
 }
 
-export function QuizScreen({ grade, difficulty, seenIds, inventory, onUseItem, onFinish }: QuizScreenProps) {
+export function QuizScreen({ grade, subject, difficulty, seenIds, inventory, onUseItem, onFinish }: QuizScreenProps) {
   const config = DIFFICULTIES[difficulty]
+  const subjectMeta = SUBJECTS.find((item) => item.id === subject)
 
-  const [deck] = useState(() => buildDeck(grade, seenIds))
+  const [deck] = useState(() => buildDeck(subject, grade, seenIds))
   const [questions, setQuestions] = useState<RuntimeQuestion[]>(deck.questions)
   const [spares, setSpares] = useState<Question[]>(deck.spares)
 
@@ -149,6 +152,7 @@ export function QuizScreen({ grade, difficulty, seenIds, inventory, onUseItem, o
   const finish = (cleared: boolean) => {
     playSfx(cleared ? 'win' : 'lose')
     onFinish({
+      subject,
       grade,
       difficulty,
       total: QUESTIONS_PER_SESSION,
@@ -258,7 +262,7 @@ export function QuizScreen({ grade, difficulty, seenIds, inventory, onUseItem, o
                 ข้อ {index + 1}/{questions.length}
               </div>
               <div className="text-xs text-slate-500">
-                {config.emoji} {config.label} · คะแนน {correct}
+                {subjectMeta?.emoji} {subjectMeta?.shortLabel} · {config.emoji} {config.label} · คะแนน {correct}
                 {streak >= 3 && <span className="ml-1 font-semibold text-orange-500">🔥 ต่อเนื่อง {streak}</span>}
               </div>
             </div>

@@ -34,9 +34,9 @@ export function HomeScreen({ profile, onPlay, onOpenBag, onOpenHowTo, onRename }
           🚀
         </motion.div>
 
-        <h1 className="text-gradient text-4xl font-bold sm:text-5xl">ภาษาไทยผจญภัย</h1>
+        <h1 className="text-gradient text-4xl font-bold sm:text-5xl">ห้องเรียนผจญภัย</h1>
         <p className="mt-2 text-sm text-slate-500 sm:text-base">
-          ตะลุยแบบฝึกหัดภาษาไทย เก็บเลเวล สะสมไอเท็ม และเก็บดาวไปตกแต่งยานอวกาศ
+          ตะลุยแบบฝึกหัดหลากหลายวิชา เก็บเลเวล สะสมไอเท็ม และเก็บดาวไปตกแต่งยานอวกาศ
         </p>
 
         <div className="mt-6 flex flex-col items-center gap-3">

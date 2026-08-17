@@ -1,24 +1,27 @@
 import { motion } from 'motion/react'
 import { GlassButton } from '@/components/ui/GlassButton'
 import { GlassCard } from '@/components/ui/GlassCard'
-import { DIFFICULTIES, GRADES, MAX_HEARTS, MAX_SURRENDER, QUESTIONS_PER_SESSION } from '@/game/constants'
-import type { Difficulty, Grade } from '@/game/types'
+import { DIFFICULTIES, GRADES, MAX_HEARTS, MAX_SURRENDER, QUESTIONS_PER_SESSION, SUBJECTS } from '@/game/constants'
+import type { Difficulty, Grade, Subject } from '@/game/types'
 
 interface DifficultyScreenProps {
   grade: Grade
+  subject: Subject
   onSelect: (difficulty: Difficulty) => void
   onBack: () => void
 }
 
-export function DifficultyScreen({ grade, onSelect, onBack }: DifficultyScreenProps) {
+export function DifficultyScreen({ grade, subject, onSelect, onBack }: DifficultyScreenProps) {
   const gradeMeta = GRADES.find((item) => item.grade === grade)
+  const subjectMeta = SUBJECTS.find((item) => item.id === subject)
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
       <GlassCard className="text-center">
         <h1 className="text-gradient text-3xl font-bold">เลือกโหมดความยาก</h1>
         <p className="mt-2 text-sm text-slate-500">
-          {gradeMeta?.emoji} {gradeMeta?.label} · {QUESTIONS_PER_SESSION} ข้อ · หัวใจ {MAX_HEARTS} ดวง
+          {subjectMeta?.emoji} {subjectMeta?.shortLabel} · {gradeMeta?.emoji} {gradeMeta?.label} · {QUESTIONS_PER_SESSION} ข้อ ·
+          หัวใจ {MAX_HEARTS} ดวง
         </p>
       </GlassCard>
 

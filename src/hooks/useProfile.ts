@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { applyXp, createProfile, loadProfile, saveProfile } from '@/game/profile'
-import type { Grade, ItemId, PlayerProfile, RewardSummary, SessionResult } from '@/game/types'
+import type { Grade, ItemId, PlayerProfile, RewardSummary, SessionResult, Subject } from '@/game/types'
 import { calcStars, calcXp, missedCount, rollItems } from '@/game/rewards'
 import { getQuestionCount } from '@/data'
 
@@ -32,10 +32,11 @@ export function useProfile() {
     const nextItems = { ...prev.items }
     for (const id of items) nextItems[id] = (nextItems[id] ?? 0) + 1
 
-    const key = String(result.grade)
-    const merged = Array.from(new Set([...(prev.seen[key] ?? []), ...result.servedIds]))
+    const key = `${result.subject}:${result.grade}`
+    const previousSeen = prev.seen[key] ?? (result.subject === 'thai' ? prev.seen[String(result.grade)] ?? [] : [])
+    const merged = Array.from(new Set([...previousSeen, ...result.servedIds]))
     // เมื่อเล่นครบทุกข้อในคลังแล้ว ให้เริ่มนับรอบใหม่
-    const seenIds = merged.length >= getQuestionCount(result.grade) ? [] : merged
+    const seenIds = merged.length >= getQuestionCount(result.subject, result.grade) ? [] : merged
 
     const next: PlayerProfile = {
       ...prev,
@@ -68,7 +69,11 @@ export function useProfile() {
 
   const resetProfile = useCallback(() => setProfile(createProfile()), [])
 
-  const seenIdsFor = useCallback((grade: Grade) => profileRef.current.seen[String(grade)] ?? [], [])
+  const seenIdsFor = useCallback((subject: Subject, grade: Grade) => {
+    const key = `${subject}:${grade}`
+    // รองรับประวัติจากเวอร์ชันเดิมที่บันทึกวิชาภาษาไทยด้วยเลขชั้นเพียงอย่างเดียว
+    return profileRef.current.seen[key] ?? (subject === 'thai' ? profileRef.current.seen[String(grade)] ?? [] : [])
+  }, [])
 
   return { profile, consumeItem, finishSession, renamePlayer, resetProfile, seenIdsFor }
 }

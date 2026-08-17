@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { AuroraBackground } from '@/components/ui/AuroraBackground'
 import { HomeScreen } from '@/components/screens/HomeScreen'
+import { SubjectScreen } from '@/components/screens/SubjectScreen'
 import { GradeScreen } from '@/components/screens/GradeScreen'
 import { DifficultyScreen } from '@/components/screens/DifficultyScreen'
 import { QuizScreen } from '@/components/screens/QuizScreen'
@@ -9,14 +10,15 @@ import { ResultScreen } from '@/components/screens/ResultScreen'
 import { BagScreen } from '@/components/screens/BagScreen'
 import { HowToScreen } from '@/components/screens/HowToScreen'
 import { useProfile } from '@/hooks/useProfile'
-import type { Difficulty, Grade, RewardSummary, SessionResult } from '@/game/types'
+import type { Difficulty, Grade, RewardSummary, SessionResult, Subject } from '@/game/types'
 
-type Screen = 'home' | 'grade' | 'difficulty' | 'quiz' | 'result' | 'bag' | 'howto'
+type Screen = 'home' | 'subject' | 'grade' | 'difficulty' | 'quiz' | 'result' | 'bag' | 'howto'
 
 export default function App() {
   const { profile, consumeItem, finishSession, renamePlayer, resetProfile, seenIdsFor } = useProfile()
 
   const [screen, setScreen] = useState<Screen>('home')
+  const [subject, setSubject] = useState<Subject>('thai')
   const [grade, setGrade] = useState<Grade>(1)
   const [difficulty, setDifficulty] = useState<Difficulty>('easy')
   /** เปลี่ยนค่าเพื่อบังคับให้ QuizScreen เริ่มรอบใหม่ */
@@ -49,33 +51,50 @@ export default function App() {
           {screen === 'home' && (
             <HomeScreen
               profile={profile}
-              onPlay={() => setScreen('grade')}
+              onPlay={() => setScreen('subject')}
               onOpenBag={() => setScreen('bag')}
               onOpenHowTo={() => setScreen('howto')}
               onRename={renamePlayer}
             />
           )}
 
-          {screen === 'grade' && (
-            <GradeScreen
+          {screen === 'subject' && (
+            <SubjectScreen
               onSelect={(value) => {
-                setGrade(value)
-                setScreen('difficulty')
+                setSubject(value)
+                setScreen('grade')
               }}
               onBack={() => setScreen('home')}
             />
           )}
 
+          {screen === 'grade' && (
+            <GradeScreen
+              subject={subject}
+              onSelect={(value) => {
+                setGrade(value)
+                setScreen('difficulty')
+              }}
+              onBack={() => setScreen('subject')}
+            />
+          )}
+
           {screen === 'difficulty' && (
-            <DifficultyScreen grade={grade} onSelect={startRun} onBack={() => setScreen('grade')} />
+            <DifficultyScreen
+              subject={subject}
+              grade={grade}
+              onSelect={startRun}
+              onBack={() => setScreen('grade')}
+            />
           )}
 
           {screen === 'quiz' && (
             <QuizScreen
               key={runId}
+              subject={subject}
               grade={grade}
               difficulty={difficulty}
-              seenIds={seenIdsFor(grade)}
+              seenIds={seenIdsFor(subject, grade)}
               inventory={profile.items}
               onUseItem={consumeItem}
               onFinish={handleFinish}
@@ -107,7 +126,7 @@ export default function App() {
       </AnimatePresence>
 
       <footer className="mt-10 text-center text-xs text-slate-400">
-        ภาษาไทยผจญภัย · แบบฝึกหัดภาษาไทยระดับประถมศึกษา · ข้อมูลผู้เล่นถูกบันทึกไว้ในเครื่องของคุณ
+        ห้องเรียนผจญภัย · แบบฝึกหัดหลายวิชาระดับประถมศึกษา · ข้อมูลผู้เล่นถูกบันทึกไว้ในเครื่องของคุณ
       </footer>
     </div>
   )

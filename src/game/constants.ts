@@ -1,4 +1,4 @@
-import type { Difficulty, Grade, ItemId, ItemMeta, QuestionCategory } from '@/game/types'
+import type { Difficulty, Grade, ItemId, ItemMeta, QuestionCategory, Subject } from '@/game/types'
 
 export const QUESTIONS_PER_SESSION = 15
 export const MAX_HEARTS = 10
@@ -111,7 +111,51 @@ export const CATEGORY_LABEL: Record<QuestionCategory, string> = {
   rohan: 'คำที่ใช้ รร / ฤ ฤๅ / บัน-บรร',
   dialect: 'ภาษาไทยมาตรฐานและภาษาถิ่น',
   loanword: 'คำที่มาจากภาษาต่างประเทศ',
+  religion: 'ศาสนาและพุทธประวัติ',
+  morality: 'คุณธรรมและการทำความดี',
+  civics: 'หน้าที่พลเมือง',
+  culture: 'วัฒนธรรมและประเพณี',
+  economics: 'เศรษฐศาสตร์ใกล้ตัว',
+  history: 'เวลาและประวัติศาสตร์',
+  geography: 'ภูมิศาสตร์รอบตัว',
+  environment: 'สิ่งแวดล้อม',
 }
+
+export interface SubjectMeta {
+  id: Subject
+  label: string
+  shortLabel: string
+  description: string
+  emoji: string
+  gradient: string
+}
+
+export const SUBJECTS: SubjectMeta[] = [
+  {
+    id: 'thai',
+    label: 'ภาษาไทย',
+    shortLabel: 'ภาษาไทย',
+    description: 'ฝึกอ่าน เขียน และหลักภาษาไทย',
+    emoji: '📚',
+    gradient: 'from-pink-200 via-fuchsia-200 to-violet-200',
+  },
+  {
+    id: 'social',
+    label: 'สังคมศึกษา ศาสนา และวัฒนธรรม',
+    shortLabel: 'สังคมศึกษา',
+    description: 'เรียนรู้สังคม ศาสนา วัฒนธรรม และโลกรอบตัว',
+    emoji: '🌏',
+    gradient: 'from-emerald-200 via-teal-200 to-sky-200',
+  },
+  {
+    id: 'math',
+    label: 'คณิตศาสตร์',
+    shortLabel: 'คณิตศาสตร์',
+    description: 'ฝึกคิดคำนวณและแก้โจทย์อย่างสนุก',
+    emoji: '🔢',
+    gradient: 'from-amber-200 via-orange-200 to-rose-200',
+  },
+]
 
 export interface GradeMeta {
   grade: Grade
@@ -119,7 +163,6 @@ export interface GradeMeta {
   shortLabel: string
   emoji: string
   gradient: string
-  enabled: boolean
 }
 
 export const GRADES: GradeMeta[] = [
@@ -129,7 +172,6 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.1',
     emoji: '🐣',
     gradient: 'from-pink-200 via-rose-200 to-orange-200',
-    enabled: true,
   },
   {
     grade: 2,
@@ -137,7 +179,6 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.2',
     emoji: '🐤',
     gradient: 'from-amber-200 via-yellow-200 to-lime-200',
-    enabled: true,
   },
   {
     grade: 3,
@@ -145,7 +186,6 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.3',
     emoji: '🐥',
     gradient: 'from-emerald-200 via-teal-200 to-cyan-200',
-    enabled: true,
   },
   {
     grade: 4,
@@ -153,7 +193,6 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.4',
     emoji: '🦉',
     gradient: 'from-sky-200 via-blue-200 to-indigo-200',
-    enabled: true,
   },
   {
     grade: 5,
@@ -161,7 +200,6 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.5',
     emoji: '🦄',
     gradient: 'from-violet-200 via-purple-200 to-fuchsia-200',
-    enabled: true,
   },
   {
     grade: 6,
@@ -169,15 +207,14 @@ export const GRADES: GradeMeta[] = [
     shortLabel: 'ป.6',
     emoji: '🐉',
     gradient: 'from-rose-200 via-pink-200 to-purple-200',
-    enabled: false,
   },
 ]
 
 export const RANKS = [
   { minLevel: 1, title: 'นักเรียนน้อย', emoji: '🌱' },
   { minLevel: 3, title: 'นักผจญภัยตัวจิ๋ว', emoji: '🎒' },
-  { minLevel: 5, title: 'นักสะกดคำ', emoji: '✏️' },
-  { minLevel: 8, title: 'จอมเวทอักษร', emoji: '🔮' },
-  { minLevel: 12, title: 'อัศวินภาษาไทย', emoji: '🛡️' },
-  { minLevel: 16, title: 'ปรมาจารย์ภาษาไทย', emoji: '👑' },
+  { minLevel: 5, title: 'นักเรียนรู้ตัวน้อย', emoji: '✏️' },
+  { minLevel: 8, title: 'จอมเวทความรู้', emoji: '🔮' },
+  { minLevel: 12, title: 'อัศวินนักคิด', emoji: '🛡️' },
+  { minLevel: 16, title: 'ปรมาจารย์การเรียนรู้', emoji: '👑' },
 ]

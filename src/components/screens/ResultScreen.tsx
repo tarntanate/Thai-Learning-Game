@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'motion/react'
 import { GlassButton } from '@/components/ui/GlassButton'
 import { GlassCard } from '@/components/ui/GlassCard'
-import { DIFFICULTIES, GRADES, ITEMS, MAX_HEARTS, RARITY_LABEL } from '@/game/constants'
+import { DIFFICULTIES, GRADES, ITEMS, MAX_HEARTS, RARITY_LABEL, SUBJECTS } from '@/game/constants'
 import { rankFor } from '@/game/profile'
 import type { RewardSummary, SessionResult } from '@/game/types'
 import { playSfx } from '@/lib/sound'
@@ -16,6 +16,7 @@ interface ResultScreenProps {
 
 export function ResultScreen({ result, reward, onPlayAgain, onHome }: ResultScreenProps) {
   const gradeMeta = GRADES.find((item) => item.grade === result.grade)
+  const subjectMeta = SUBJECTS.find((item) => item.id === result.subject)
   const config = DIFFICULTIES[result.difficulty]
   const missed = result.wrong + result.surrendered
   const perfect = result.cleared && missed === 0
@@ -48,7 +49,7 @@ export function ResultScreen({ result, reward, onPlayAgain, onHome }: ResultScre
           {result.cleared ? (perfect ? 'สุดยอดมาก! ตอบถูกทุกข้อ' : 'เล่นจบแล้ว เก่งมาก!') : 'หัวใจหมดแล้ว...'}
         </h1>
         <p className="mt-2 text-sm text-slate-500">
-          {gradeMeta?.shortLabel} · {config.label}
+          {subjectMeta?.emoji} {subjectMeta?.shortLabel} · {gradeMeta?.shortLabel} · {config.label}
           {!result.cleared && ' · ลองใหม่อีกครั้งนะ ครั้งหน้าต้องทำได้แน่นอน!'}
         </p>
 

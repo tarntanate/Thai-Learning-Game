@@ -1,39 +1,45 @@
 import { motion } from 'motion/react'
 import { GlassButton } from '@/components/ui/GlassButton'
 import { GlassCard } from '@/components/ui/GlassCard'
-import { GRADES } from '@/game/constants'
+import { GRADES, SUBJECTS } from '@/game/constants'
 import { getQuestionCount } from '@/data'
-import type { Grade } from '@/game/types'
+import type { Grade, Subject } from '@/game/types'
 
 interface GradeScreenProps {
+  subject: Subject
   onSelect: (grade: Grade) => void
   onBack: () => void
 }
 
-export function GradeScreen({ onSelect, onBack }: GradeScreenProps) {
+export function GradeScreen({ subject, onSelect, onBack }: GradeScreenProps) {
+  const subjectMeta = SUBJECTS.find((item) => item.id === subject)
+
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
       <GlassCard className="text-center">
         <h1 className="text-gradient text-3xl font-bold">เลือกระดับชั้น</h1>
-        <p className="mt-2 text-sm text-slate-500">หนูอยู่ชั้นไหน เลือกเลย!</p>
+        <p className="mt-2 text-sm text-slate-500">
+          {subjectMeta?.emoji} {subjectMeta?.label} · หนูอยู่ชั้นไหน เลือกเลย!
+        </p>
       </GlassCard>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {GRADES.map((meta, index) => {
-          const count = getQuestionCount(meta.grade)
+          const count = getQuestionCount(subject, meta.grade)
+          const enabled = count > 0
           return (
             <motion.button
               key={meta.grade}
               type="button"
-              disabled={!meta.enabled}
+              disabled={!enabled}
               onClick={() => onSelect(meta.grade)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, type: 'spring', stiffness: 220, damping: 22 }}
-              whileHover={meta.enabled ? { scale: 1.04, y: -4 } : undefined}
-              whileTap={meta.enabled ? { scale: 0.97 } : undefined}
+              whileHover={enabled ? { scale: 1.04, y: -4 } : undefined}
+              whileTap={enabled ? { scale: 0.97 } : undefined}
               className={`glass relative overflow-hidden rounded-[1.75rem] p-5 text-left transition ${
-                meta.enabled ? 'hover:shadow-xl' : 'cursor-not-allowed opacity-55 grayscale'
+                enabled ? 'hover:shadow-xl' : 'cursor-not-allowed opacity-55 grayscale'
               }`}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${meta.gradient} opacity-45`} />
@@ -45,7 +51,7 @@ export function GradeScreen({ onSelect, onBack }: GradeScreenProps) {
                 </div>
               </div>
               <div className="relative mt-4">
-                {meta.enabled ? (
+                {enabled ? (
                   <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-emerald-600">
                     ✅ พร้อมเล่น · {count} คำถาม
                   </span>
@@ -62,7 +68,7 @@ export function GradeScreen({ onSelect, onBack }: GradeScreenProps) {
 
       <div className="flex justify-center">
         <GlassButton variant="ghost" sfx="back" onClick={onBack}>
-          ← กลับหน้าแรก
+          ← เลือกวิชาใหม่
         </GlassButton>
       </div>
     </div>

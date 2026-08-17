@@ -1,5 +1,7 @@
 export type Grade = 1 | 2 | 3 | 4 | 5 | 6
 
+export type Subject = 'thai' | 'social' | 'math'
+
 export type Difficulty = 'easy' | 'hard'
 
 export type ItemId = 'clock' | 'wand' | 'cat' | 'teacher'
@@ -31,6 +33,14 @@ export type QuestionCategory =
   | 'rohan'
   | 'dialect'
   | 'loanword'
+  | 'religion'
+  | 'morality'
+  | 'civics'
+  | 'culture'
+  | 'economics'
+  | 'history'
+  | 'geography'
+  | 'environment'
 
 export interface Question {
   id: string
@@ -80,13 +90,14 @@ export interface PlayerProfile {
   stars: number
   items: Record<ItemId, number>
   stats: PlayerStats
-  /** id คำถามที่เคยเจอแล้ว แยกตามระดับชั้น */
+  /** id คำถามที่เคยเจอแล้ว แยกตามวิชาและระดับชั้น */
   seen: Record<string, string[]>
   createdAt: number
   updatedAt: number
 }
 
 export interface SessionResult {
+  subject: Subject
   grade: Grade
   difficulty: Difficulty
   total: number

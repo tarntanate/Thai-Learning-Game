@@ -17,6 +17,7 @@ export function HowToScreen({ onBack }: HowToScreenProps) {
       <GlassCard delay={0.05}>
         <h2 className="font-display mb-2 text-lg font-semibold text-slate-700">🎮 การเล่นแต่ละรอบ</h2>
         <ul className="space-y-2 text-sm text-slate-600">
+          <li>• เลือกวิชาและระดับชั้นที่เปิดให้เล่น แล้วเลือกโหมดความยาก</li>
           <li>• หนึ่งรอบมีคำถาม {QUESTIONS_PER_SESSION} ข้อ เริ่มแล้วต้องเล่นให้จบ ออกกลางคันไม่ได้</li>
           <li>• มีหัวใจ {MAX_HEARTS} ดวง ตอบผิดหรือหมดเวลาจะเสียหัวใจ 1 ดวง</li>
           <li>• ถ้าหัวใจหมด จบเกมทันที และจะไม่ได้ค่าประสบการณ์หรือของรางวัล</li>
