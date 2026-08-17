@@ -11,7 +11,7 @@ export function toRuntimeQuestion(question: Question): RuntimeQuestion {
 
 export interface SessionDeck {
   questions: RuntimeQuestion[]
-  /** คำถามสำรองสำหรับไอเท็ม "แมวส้ม" */
+  /** คำถามสำรองสำหรับไอเท็ม "แมวเปลี่ยนคำถาม" */
   spares: Question[]
 }
 

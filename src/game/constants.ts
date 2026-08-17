@@ -60,7 +60,7 @@ export const ITEMS: Record<ItemId, ItemMeta> = {
   },
   cat: {
     id: 'cat',
-    name: 'แมวส้ม',
+    name: 'แมวเปลี่ยนคำถาม',
     emoji: '🐈',
     rarity: 'rare',
     description: 'เปลี่ยนคำถามข้อนี้เป็นข้อใหม่ พร้อมรีเซ็ตเวลา',
@@ -69,7 +69,7 @@ export const ITEMS: Record<ItemId, ItemMeta> = {
   },
   teacher: {
     id: 'teacher',
-    name: 'คุณครูใจดี',
+    name: 'คุณครูช่วยเฉลย',
     emoji: '👩‍🏫',
     rarity: 'epic',
     description: 'เฉลยคำตอบที่ถูกต้องให้ทันที',
