@@ -9,16 +9,21 @@ export function missedCount(result: SessionResult) {
 
 /**
  * กติกาการแจกไอเท็มเมื่อเล่นจบครบทุกข้อ
- * - ตอบถูกหมด          → 3 ชิ้น (สุ่มจาก 4 ชนิด)
+ * - ตอบถูกหมด          → ได้คุณครูใจดี 1 ชิ้นแน่นอน + สุ่ม 2 ชิ้น (คุณครูใจดี / แมวส้ม / คฑาพ่อมด)
  * - พลาดไม่เกิน 2 ข้อ   → 2 ชิ้น (สุ่มจาก 4 ชนิด)
  * - พลาดตั้งแต่ 3 ข้อ   → นาฬิกา 1 ชิ้น
  */
 export function rollItems(missed: number): ItemId[] {
   if (missed >= 3) return ['clock']
 
-  const count = missed === 0 ? 3 : 2
+  if (missed === 0) {
+    const perfectPool: ItemId[] = ['teacher', 'cat', 'wand']
+    const entries = perfectPool.map((id) => ({ value: id, weight: ITEMS[id].dropWeight }))
+    return ['teacher', weightedPick(entries), weightedPick(entries)]
+  }
+
   const entries = ITEM_ORDER.map((id) => ({ value: id, weight: ITEMS[id].dropWeight }))
-  return Array.from({ length: count }, () => weightedPick(entries))
+  return Array.from({ length: 2 }, () => weightedPick(entries))
 }
 
 export function calcXp(result: SessionResult) {
