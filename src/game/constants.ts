@@ -119,6 +119,11 @@ export const CATEGORY_LABEL: Record<QuestionCategory, string> = {
   history: 'เวลาและประวัติศาสตร์',
   geography: 'ภูมิศาสตร์รอบตัว',
   environment: 'สิ่งแวดล้อม',
+  livingthings: 'Living Things',
+  bodyhealth: 'Human Body & Health',
+  matterenergy: 'Matter, Forces & Energy',
+  earthspace: 'Earth & Space',
+  inquiry: 'Science Skills',
 }
 
 export interface SubjectMeta {
@@ -146,6 +151,14 @@ export const SUBJECTS: SubjectMeta[] = [
     description: 'เรียนรู้สังคม ศาสนา วัฒนธรรม และโลกรอบตัว',
     emoji: '🌏',
     gradient: 'from-emerald-200 via-teal-200 to-sky-200',
+  },
+  {
+    id: 'science',
+    label: 'Science (English Program)',
+    shortLabel: 'Science',
+    description: 'Explore living things, matter, Earth, and space in English',
+    emoji: '🔬',
+    gradient: 'from-cyan-200 via-sky-200 to-indigo-200',
   },
   {
     id: 'math',

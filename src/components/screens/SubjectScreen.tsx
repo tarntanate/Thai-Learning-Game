@@ -18,7 +18,7 @@ export function SubjectScreen({ onSelect, onBack }: SubjectScreenProps) {
         <p className="mt-2 text-sm text-slate-500">วันนี้อยากออกผจญภัยในวิชาไหนดี?</p>
       </GlassCard>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {SUBJECTS.map((meta, index) => {
           const count = GRADES.reduce((sum, grade) => sum + getQuestionCount(meta.id, grade.grade), 0)
           const enabled = count > 0

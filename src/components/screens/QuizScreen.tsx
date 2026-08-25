@@ -20,7 +20,8 @@ import { playSfx } from '@/lib/sound'
 import { pickOne, shuffle } from '@/lib/random'
 import { cn } from '@/lib/utils'
 
-const CHOICE_LABELS = ['ก', 'ข', 'ค', 'ง', 'จ', 'ฉ']
+const THAI_CHOICE_LABELS = ['ก', 'ข', 'ค', 'ง', 'จ', 'ฉ']
+const ENGLISH_CHOICE_LABELS = ['A', 'B', 'C', 'D', 'E', 'F']
 
 type Phase = 'playing' | 'feedback'
 type Outcome = 'correct' | 'wrong' | 'timeout' | 'surrender'
@@ -38,6 +39,7 @@ interface QuizScreenProps {
 export function QuizScreen({ grade, subject, difficulty, seenIds, inventory, onUseItem, onFinish }: QuizScreenProps) {
   const config = DIFFICULTIES[difficulty]
   const subjectMeta = SUBJECTS.find((item) => item.id === subject)
+  const choiceLabels = subject === 'science' ? ENGLISH_CHOICE_LABELS : THAI_CHOICE_LABELS
 
   const [deck] = useState(() => buildDeck(subject, grade, seenIds))
   const [questions, setQuestions] = useState<RuntimeQuestion[]>(deck.questions)
@@ -338,7 +340,7 @@ export function QuizScreen({ grade, subject, difficulty, seenIds, inventory, onU
                   )}
                 >
                   <span className="font-display grid size-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-white/90 to-white/60 text-base font-bold text-fuchsia-500 shadow-inner">
-                    {CHOICE_LABELS[choiceIndex]}
+                    {choiceLabels[choiceIndex]}
                   </span>
                   <span className="flex-1">{choice}</span>
                   {showAnswer && <span className="text-xl">✅</span>}
