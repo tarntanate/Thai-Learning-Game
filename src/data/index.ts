@@ -9,6 +9,7 @@ import { socialGrade3Questions } from '@/data/social/grade3'
 import { scienceGrade1Questions } from '@/data/science/grade1'
 import { scienceGrade2Questions } from '@/data/science/grade2'
 import { scienceGrade3Questions } from '@/data/science/grade3'
+import { scienceGrade4Questions } from '@/data/science/grade4'
 import type { Grade, Question, Subject } from '@/game/types'
 
 const BANK: Record<Subject, Partial<Record<Grade, Question[]>>> = {
@@ -28,6 +29,7 @@ const BANK: Record<Subject, Partial<Record<Grade, Question[]>>> = {
     1: scienceGrade1Questions,
     2: scienceGrade2Questions,
     3: scienceGrade3Questions,
+    4: scienceGrade4Questions,
   },
   math: {},
 }
