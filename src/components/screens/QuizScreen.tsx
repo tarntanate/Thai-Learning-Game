@@ -39,7 +39,7 @@ interface QuizScreenProps {
 export function QuizScreen({ grade, subject, difficulty, seenIds, inventory, onUseItem, onFinish }: QuizScreenProps) {
   const config = DIFFICULTIES[difficulty]
   const subjectMeta = SUBJECTS.find((item) => item.id === subject)
-  const choiceLabels = subject === 'science' ? ENGLISH_CHOICE_LABELS : THAI_CHOICE_LABELS
+  const choiceLabels = subject === 'science' || subject === 'english' ? ENGLISH_CHOICE_LABELS : THAI_CHOICE_LABELS
 
   const [deck] = useState(() => buildDeck(subject, grade, seenIds))
   const [questions, setQuestions] = useState<RuntimeQuestion[]>(deck.questions)

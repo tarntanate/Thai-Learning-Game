@@ -5,6 +5,7 @@
 ## วิชาที่รองรับ
 
 - ภาษาไทย: ป.1–ป.5
+- ภาษาอังกฤษ (International / English Program): Grade 1–2 ชั้นละ 50 ข้อ พร้อมโจทย์ คำใบ้ และเฉลยภาษาอังกฤษ ครอบคลุม Phonics & Spelling, Vocabulary, Grammar, Sentences & Punctuation และ Reading Comprehension โดย Grade 2 เพิ่มความซับซ้อนของไวยากรณ์และการอ่านจาก Grade 1
 - สังคมศึกษา ศาสนา และวัฒนธรรม: ป.1–ป.3 ระดับชั้นละ 100 ข้อ ครอบคลุมศาสนาและพุทธศาสนา คุณธรรม หน้าที่พลเมือง วัฒนธรรม เศรษฐศาสตร์ ประวัติศาสตร์ ภูมิศาสตร์ และสิ่งแวดล้อม
 - วิทยาศาสตร์ (Science - English Program): ป.1–ป.4 ระดับชั้นละ 50 ข้อ ครอบคลุม Living Things, Human Body & Health, Matter, Forces & Energy, Earth & Space และ Science Skills
 - คณิตศาสตร์: เตรียมโครงสร้างและเมนูไว้แล้ว (เร็ว ๆ นี้)

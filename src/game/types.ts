@@ -1,6 +1,6 @@
 export type Grade = 1 | 2 | 3 | 4 | 5 | 6
 
-export type Subject = 'thai' | 'social' | 'science' | 'math'
+export type Subject = 'thai' | 'social' | 'science' | 'english' | 'math'
 
 export type Difficulty = 'easy' | 'hard'
 
@@ -46,6 +46,11 @@ export type QuestionCategory =
   | 'matterenergy'
   | 'earthspace'
   | 'inquiry'
+  | 'phonics'
+  | 'vocabulary'
+  | 'grammar'
+  | 'writing'
+  | 'reading'
 
 export interface Question {
   id: string

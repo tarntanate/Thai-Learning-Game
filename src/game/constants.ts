@@ -124,6 +124,11 @@ export const CATEGORY_LABEL: Record<QuestionCategory, string> = {
   matterenergy: 'Matter, Forces & Energy',
   earthspace: 'Earth & Space',
   inquiry: 'Science Skills',
+  phonics: 'Phonics & Spelling',
+  vocabulary: 'Vocabulary',
+  grammar: 'Grammar',
+  writing: 'Sentences & Punctuation',
+  reading: 'Reading Comprehension',
 }
 
 export interface SubjectMeta {
@@ -159,6 +164,14 @@ export const SUBJECTS: SubjectMeta[] = [
     description: 'Explore living things, matter, Earth, and space in English',
     emoji: '🔬',
     gradient: 'from-cyan-200 via-sky-200 to-indigo-200',
+  },
+  {
+    id: 'english',
+    label: 'English (International / English Program)',
+    shortLabel: 'English',
+    description: 'Grade 1–2 · Phonics, vocabulary, grammar, and reading',
+    emoji: '🔤',
+    gradient: 'from-violet-200 via-purple-200 to-pink-200',
   },
   {
     id: 'math',
