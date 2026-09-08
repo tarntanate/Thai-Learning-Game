@@ -51,6 +51,12 @@ export type QuestionCategory =
   | 'grammar'
   | 'writing'
   | 'reading'
+  | 'numberplace'
+  | 'arithmetic'
+  | 'fractions'
+  | 'measurement'
+  | 'geometry'
+  | 'datapatterns'
 
 export interface Question {
   id: string

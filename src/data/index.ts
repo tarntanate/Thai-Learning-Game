@@ -12,6 +12,7 @@ import { scienceGrade3Questions } from '@/data/science/grade3'
 import { scienceGrade4Questions } from '@/data/science/grade4'
 import { englishGrade1Questions } from '@/data/english/grade1'
 import { englishGrade2Questions } from '@/data/english/grade2'
+import { mathGrade3Questions } from '@/data/math/grade3'
 import type { Grade, Question, Subject } from '@/game/types'
 
 const BANK: Record<Subject, Partial<Record<Grade, Question[]>>> = {
@@ -37,7 +38,9 @@ const BANK: Record<Subject, Partial<Record<Grade, Question[]>>> = {
     1: englishGrade1Questions,
     2: englishGrade2Questions,
   },
-  math: {},
+  math: {
+    3: mathGrade3Questions,
+  },
 }
 
 export function getQuestionBank(subject: Subject, grade: Grade): Question[] {
