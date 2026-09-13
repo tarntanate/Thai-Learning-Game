@@ -129,6 +129,12 @@ export const CATEGORY_LABEL: Record<QuestionCategory, string> = {
   grammar: 'Grammar',
   writing: 'Sentences & Punctuation',
   reading: 'Reading Comprehension',
+  numberplace: 'Numbers & Place Value',
+  arithmetic: 'Addition, Subtraction, Multiplication & Division',
+  fractions: 'Fractions',
+  measurement: 'Measurement, Time & Money',
+  geometry: 'Shapes, Area & Perimeter',
+  datapatterns: 'Data & Patterns',
 }
 
 export interface SubjectMeta {
@@ -175,9 +181,9 @@ export const SUBJECTS: SubjectMeta[] = [
   },
   {
     id: 'math',
-    label: 'คณิตศาสตร์',
-    shortLabel: 'คณิตศาสตร์',
-    description: 'ฝึกคิดคำนวณและแก้โจทย์อย่างสนุก',
+    label: 'Math (English Program)',
+    shortLabel: 'Math',
+    description: 'Grade 3 · Numbers, fractions, measurement, shapes, and data',
     emoji: '🔢',
     gradient: 'from-amber-200 via-orange-200 to-rose-200',
   },

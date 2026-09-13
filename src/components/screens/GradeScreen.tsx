@@ -47,7 +47,7 @@ export function GradeScreen({ subject, onSelect, onBack }: GradeScreenProps) {
                 <span className="text-4xl">{meta.emoji}</span>
                 <div>
                   <div className="font-display text-2xl font-bold text-slate-700">
-                    {subject === 'english' ? `Grade ${meta.grade}` : meta.shortLabel}
+                    {subject === 'english' || subject === 'math' ? `Grade ${meta.grade}` : meta.shortLabel}
                   </div>
                   <div className="text-xs text-slate-600">{meta.label}</div>
                 </div>
